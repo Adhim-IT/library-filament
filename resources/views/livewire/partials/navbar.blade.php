@@ -15,13 +15,10 @@
                         <a class="hover:text-gray-500" href="#">Book</a>
                     </li>
                     <li>
-                        <a class="hover:text-gray-500" href="#">My Book</a>
+                        <a class="hover:text-gray-500" href="#">Categroies</a>
                     </li>
                     <li>
-                        <a class="hover:text-gray-500" href="#">Developers</a>
-                    </li>
-                    <li>
-                        <a class="hover:text-gray-500" href="#">Pricing</a>
+                        <a class="hover:text-gray-500" href="#">Borrows</a>
                     </li>
                 </ul>
             </div>

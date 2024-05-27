@@ -29,34 +29,35 @@ class UserResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+   
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('full_name')
-                ->required(),
+                    ->required(),
 
                 TextInput::make('username')
-                ->required(),
+                    ->required(),
                 TextInput::make('email')
-                ->email()
-                ->maxLength(255)
-                ->unique(ignoreRecord: true)
-                ->required(),
+                    ->email()
+                    ->maxLength(255)
+                    ->unique(ignoreRecord: true)
+                    ->required(),
                 DateTimePicker::make('email_verified_at')
-                ->label('Email Verified At')
-                ->required(),
+                    ->label('Email Verified At')
+                    ->required(),
                 Textinput::make('phone')
-                ->tel()
-                ->required()
-                ->maxLength(255),
+                    ->tel()
+                    ->required()
+                    ->maxLength(255),
                 Textinput::make('password')
-                ->password()
-                ->dehydrated(fn ($state) => filled($state))
-                ->required(fn (Page $livewire): bool => $livewire instanceof CreateRecord),
+                    ->password()
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->required(fn (Page $livewire): bool => $livewire instanceof CreateRecord),
                 Select::make('role_id')
-                ->multiple(false)
-                ->relationship('roles', 'name'),
+                    ->multiple(false)
+                    ->relationship('roles', 'name'),
 
             ]);
     }
