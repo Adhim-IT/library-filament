@@ -19,6 +19,7 @@ class Book extends Model
         'category_id',
         'isbn',
         'quantity',
+        'author_id',
     ];
 
     protected $casts = [
@@ -28,5 +29,9 @@ class Book extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
     }
 }

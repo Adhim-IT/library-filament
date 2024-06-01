@@ -27,6 +27,7 @@ class BorrowResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
+                ->label('Username')
                 ->required()
                 ->searchable()
                 ->preload()

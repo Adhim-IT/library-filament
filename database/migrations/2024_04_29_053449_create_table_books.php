@@ -16,14 +16,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('author');
             $table->longText('description');
-            $table->bigInteger('quantity' ,100);
+            $table->bigInteger('quantity'); // Remove auto_increment
             $table->json('cover')->nullable();
-            $table->bigInteger('isbn' ,100);
+            $table->bigInteger('isbn'); // Remove auto_increment
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

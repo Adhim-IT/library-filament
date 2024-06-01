@@ -4,6 +4,8 @@ namespace App\Providers\Filament;
 
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
 use Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource;
+use App\Filament\Pages\Auth\Login;
+use App\Filament\Resources\AuthorResource;
 use App\Filament\Resources\BookResource;
 use App\Filament\Resources\BorrowResource;
 use App\Filament\Resources\CategoryResource;
@@ -37,7 +39,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(Login::class)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -74,6 +76,7 @@ class AdminPanelProvider extends PanelProvider
                     ...BookResource::getNavigationItems(),
                     ...BorrowResource::getNavigationItems(),
                     ...CategoryResource::getNavigationItems(),
+                    ...AuthorResource::getNavigationItems(),
                 ];
 
                 $settingItems = [

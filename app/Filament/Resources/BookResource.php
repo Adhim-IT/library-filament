@@ -41,9 +41,11 @@ class BookResource extends Resource
                         TextInput::make('title')
                             ->required()
                             ->maxLength(255),
-                        TextInput::make('author')
-                            ->maxLength(255)
-                            ->required(),
+                        Select::make('author_id')
+                            ->required()
+                            ->searchable()
+                            ->preload()
+                            ->relationship('author', 'name'),
                         MarkdownEditor::make('description')
                             ->columnSpanFull()
                             ->fileAttachmentsDirectory('books'),
@@ -84,7 +86,7 @@ class BookResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('author'),
+                Tables\Columns\TextColumn::make('author.name'),
                 Tables\Columns\TextColumn::make('category.name'),
                 Tables\Columns\ImageColumn::make('cover'),
                 Tables\Columns\TextColumn::make('isbn'),
