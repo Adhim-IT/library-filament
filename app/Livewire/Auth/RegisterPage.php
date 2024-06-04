@@ -21,15 +21,13 @@ class RegisterPage extends Component
     public function save()
     {
         $this->validate([
-            'full_name' => 'required|max:255',
-            'username' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|email|unique:users|max:255',
             'phone' => 'required|max:255',
             'password' => 'required|min:6|max:255',
         ]);
 
         $user = User::create([
-            'full_name' => $this->full_name,
             'username' => $this->username,
             'email' => $this->email,
             'phone'=> $this->phone,

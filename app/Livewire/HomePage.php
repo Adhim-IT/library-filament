@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
 use Livewire\Attributes\Title;
@@ -14,7 +15,10 @@ class HomePage extends Component
     public function render()
     {
         $books = Book::all();
-        $categories = Category::all();
-        return view('livewire.home-page');
+        $authors = Author::all();
+        return view('livewire.home-page' , [
+            'books' => $books,
+            'authors' => $authors
+        ]);
     }
 }

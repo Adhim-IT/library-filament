@@ -29,14 +29,11 @@ class UserResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-   
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('full_name')
-                    ->required(),
-
                 TextInput::make('username')
                     ->required(),
                 TextInput::make('email')
@@ -66,7 +63,6 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('full_name'),
                 Tables\Columns\TextColumn::make('username'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('phone'),

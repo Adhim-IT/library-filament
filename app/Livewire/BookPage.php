@@ -2,12 +2,20 @@
 
 namespace App\Livewire;
 
+use App\Models\Book;
+use App\Models\Category;
 use Livewire\Component;
 
 class BookPage extends Component
 {
+
     public function render()
     {
-        return view('livewire.book-page');
+        $categories = Category::all();
+        $books = Book::all();
+        return view('livewire.book-page' , [
+            'books' => $books,
+            'categories' => $categories
+        ]);
     }
 }

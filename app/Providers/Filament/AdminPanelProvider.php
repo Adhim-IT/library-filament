@@ -72,20 +72,22 @@ class AdminPanelProvider extends PanelProvider
                 $user = auth()->user();
                 $isAdmin = $user && $user->role_id == 1;
 
-                $navigationItems = [
-                    ...BookResource::getNavigationItems(),
-                    ...BorrowResource::getNavigationItems(),
-                    ...CategoryResource::getNavigationItems(),
-                    ...AuthorResource::getNavigationItems(),
-                ];
-
-                $settingItems = [
-                    ...RoleResource::getNavigationItems(),
-                    ...PermissionResource::getNavigationItems(),
-                ];
+                $navigationItems = [];
+                $settingItems = [];
 
                 if ($isAdmin) {
-                    $navigationItems = array_merge($navigationItems, UserResource::getNavigationItems());
+                    $navigationItems = [
+                        ...BookResource::getNavigationItems(),
+                        ...BorrowResource::getNavigationItems(),
+                        ...CategoryResource::getNavigationItems(),
+                        ...AuthorResource::getNavigationItems(),
+                        ...UserResource::getNavigationItems(),
+                    ];
+
+                    $settingItems = [
+                        ...RoleResource::getNavigationItems(),
+                        ...PermissionResource::getNavigationItems(),
+                    ];
                 }
 
                 return $builder->groups([
@@ -96,13 +98,11 @@ class AdminPanelProvider extends PanelProvider
                                 ->isActiveWhen(fn (): bool => request()->routeIs('filament.admin.pages.dashboard'))
                                 ->url(fn (): string => Dashboard::getUrl()),
                         ]),
-                    NavigationGroup::make('pages')
+                    NavigationGroup::make('Pages')
                         ->items($navigationItems),
-                    NavigationGroup::make('Setting')
-                        ->items($isAdmin ? $settingItems : []),
+                    NavigationGroup::make('Settings')
+                        ->items($settingItems),
                 ]);
             });
     }
 }
-
-

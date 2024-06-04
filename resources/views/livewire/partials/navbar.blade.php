@@ -9,7 +9,7 @@
                 class="nav-links duration-500 md:static absolute bg-neutral-800 md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
                 <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
                     <li>
-                        <a wire:navigate class="font-medium {{ request()->is('/') ? 'text-amber-500' : 'text-gray-500'}} py-3 md:py-6 dark:text-amber-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        <a wire:navigate class="font-medium {{ request()->is('/') ? 'text-amber-500' : 'text-gray-300'}} py-3 md:py-6 dark:text-amber-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                             href="/" aria-current="page">Home
                         </a>
                     </li>
@@ -19,15 +19,15 @@
                         </a>
                     </li>
                     <li>
-                        <a wire:navigate class="font-medium {{ request()->is('categories') ? 'text-amber-500' : 'text-gray-300'}} py-3  hover:text-gray-300 md:py-6 dark:text-gray-300 dark:hover:text-amber-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="/categories">
-                            Categories
+                        <a wire:navigate class="font-medium {{ request()->is('borrowshistori') ? 'text-amber-500' : 'text-gray-300'}} py-3  hover:text-gray-300 md:py-6 dark:text-gray-300 dark:hover:text-amber-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            href="/borrowsghistori">
+                            borrows History
                         </a>
                     </li>
                     <li>
-                        <a wire:navigate class="font-medium {{ request()->is('borrows') ? 'text-amber-500' : 'text-gray-300'}} py-3  hover:text-gray-300 md:py-6 dark:text-gray-300 dark:hover:text-amber-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="/borrows">
-                            borrows
+                        <a wire:navigate class="font-medium {{ request()->is('returnbook') ? 'text-amber-500' : 'text-gray-300'}} py-3  hover:text-gray-300 md:py-6 dark:text-gray-300 dark:hover:text-amber-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                            href="/returnbook">
+                            Return Book
                         </a>
                     </li>
                 </ul>

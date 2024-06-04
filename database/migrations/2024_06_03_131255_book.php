@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('author');
             $table->longText('description');
             $table->bigInteger('quantity'); // Remove auto_increment
             $table->json('cover')->nullable();
             $table->bigInteger('isbn'); // Remove auto_increment
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('authors');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
