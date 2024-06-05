@@ -60,4 +60,8 @@ class User extends Authenticatable implements FilamentUser, HasName
     {
         return $this->username;
     }
+    public function borrows()
+    {
+        return $this->hasMany(borrow::class);
+    }
 }

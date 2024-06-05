@@ -16,7 +16,7 @@
                             <!-- Tambahkan kolom lain sesuai kebutuhan -->
                         </tr>
                     </thead>
-                    <tbody class="bg-neutral-800 divide-y divide-gray-200">
+                    <tbody class="bg-amber-500 divide-y divide-gray-200">
                         @foreach($borrows as $borrow)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
@@ -25,9 +25,16 @@
                                 @endif
 
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-300">{{ $borrow->book->title }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-300">{{ \Illuminate\Support\Carbon::parse($borrow->borrowed_at)->format('d F Y') }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-300">{{ \Illuminate\Support\Carbon::parse($borrow->actual_return)->format('d F Y') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-200">{{ $borrow->book->title }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-200">{{ ($borrow->borrowed_at) }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-200">
+                                    @if($borrow->returned_at)
+                                        {{ $borrow->returned_at }}
+                                    @else
+                                        Belum dikembalikan
+                                    @endif
+                                </td>
+
                                 <!-- Tambahkan kolom lain sesuai kebutuhan -->
                             </tr>
                         @endforeach

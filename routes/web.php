@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePage::class)->name('home');
 Route::get('/books', BookPage::class);
 Route::get('/borrows', BorrowPage::class);
-Route::get('/book/{id}', BookDetail::class)->name('book.detail');
+Route::get('/book/{id}', BookDetail::class)->name('book-detail');
 
 
 
@@ -44,4 +44,5 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/borrowsghistori' , BorrowsHistoriPage::class);
     Route::get('/borrows' , BorrowPage::class);
+    Route::get('/return-book/{borrowId}', ReturnBookPage::class)->name('return-book');
  });

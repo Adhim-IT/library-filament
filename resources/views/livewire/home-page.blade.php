@@ -26,7 +26,7 @@
                 @foreach ($books as $index => $book)
                     <div class="flex flex-col items-center mb-8 justify-center" data-aos="fade-left"
                         data-aos-delay="{{ $index * 100 }}">
-                        <a href="{{ route('book.detail', ['id' => $book->id]) }}">
+                        <a href="{{ route('book-detail', ['id' => $book->id]) }}">
                             <img src="{{ url('storage', $book->cover) }}" alt="{{ $book->title }}"
                                 class="object-cover max-w-full max-h-60 rounded-lg border-4 border-amber-400">
                         </a>

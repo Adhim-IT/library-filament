@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Livewire;
 
 use App\Models\Author;
@@ -25,14 +26,20 @@ class BorrowPage extends Component
         $book = Book::find($this->bookId);
 
         if ($book) {
-            if ($book->quantity > 0) {
+            // Periksa apakah buku masih tersedia
+            if ($book->quantity <= 0) {
+                session()->flash('error', 'Maaf, buku tidak tersedia untuk dipinjam saat ini.');
+            } else {
+                // Periksa apakah pengguna sudah meminjam buku ini sebelumnya
                 $previousBorrow = Borrow::where('user_id', auth()->id())
                     ->where('book_id', $this->bookId)
+                    ->whereNull('returned_at') // Memeriksa apakah buku belum dikembalikan
                     ->first();
 
                 if ($previousBorrow) {
                     session()->flash('error', 'Anda sudah meminjam buku ini sebelumnya.');
                 } else {
+                    // Jika buku tersedia dan belum pernah dipinjam, lakukan proses peminjaman
                     $book->decrement('quantity');
                     Borrow::create([
                         'user_id' => auth()->id(),
@@ -40,16 +47,14 @@ class BorrowPage extends Component
                         'borrowed_at' => now(),
                         'actual_return' => now()->addDays(1),
                     ]);
-
-                    return redirect()->route('home')->with('success', 'Buku berhasil di Pinajam');
+                    session()->flash('success', 'Buku berhasil dipinjam.');
                 }
-            } else {
-                session()->flash('error', 'Maaf, buku tidak tersedia untuk dipinjam saat ini.');
             }
         } else {
             session()->flash('error', 'Buku tidak ditemukan.');
         }
     }
+
 
     public function render()
     {
@@ -69,5 +74,3 @@ class BorrowPage extends Component
         ]);
     }
 }
-
-

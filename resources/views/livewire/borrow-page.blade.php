@@ -6,20 +6,34 @@
         <div class="flex flex-col lg:flex-row items-center mb-12">
             <div class="w-full lg:w-1/3 mb-8 lg:mb-0">
                 <!-- Gambar Buku -->
-                <img src="{{ url('storage', $book->cover) }}" alt="{{ $book->title }}" class="w-full h-auto rounded-lg shadow-lg">
+                <img src="{{ url('storage', $book->cover) }}" alt="{{ $book->title }}"
+                    class="w-full h-auto rounded-lg shadow-lg">
             </div>
             <div class="w-full lg:w-2/3 lg:ml-8">
+                @if (session()->has('success'))
+                    <div class="bg-green-500 text-white p-4 rounded-lg mb-6">
+                        {{ session('success') }}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            window.location.href = "{{ route('home') }}";
+                        }, 5000);
+                    </script>
+                @endif
+
+                @if (session()->has('error'))
+                    <div class="bg-red-500 text-white p-4 rounded-lg mb-6">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <h2 class="text-2xl font-semibold text-gray-200 mb-4">{{ $book->title }}</h2>
                 <p class="text-lg text-gray-200 mb-6">{{ $author->name }}</p>
                 <div class="text-gray-200 lg:ml-8 max-h-96 overflow-auto pr-4">
                     <p class="text-gray-300 leading-relaxed mb-4">{!! Str::markdown($book->description) !!}</p>
                 </div>
                 <!-- Tombol Pinjam -->
-                <button
-                    id="pinjamButton"
-                    wire:click="pinjamBuku"
-                    class="bg-amber-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mt-10 ml-4"
-                >
+                <button id="pinjamButton" wire:click="pinjamBuku"
+                    class="bg-amber-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mt-10 ml-4">
                     Pinjam Buku
                 </button>
             </div>
