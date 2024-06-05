@@ -44,5 +44,4 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/borrowsghistori' , BorrowsHistoriPage::class);
     Route::get('/borrows' , BorrowPage::class);
-    Route::get('/returnbook' , ReturnBookPage::class);
  });

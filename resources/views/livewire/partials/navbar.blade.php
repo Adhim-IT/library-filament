@@ -24,12 +24,12 @@
                             borrows History
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a wire:navigate class="font-medium {{ request()->is('returnbook') ? 'text-amber-500' : 'text-gray-300'}} py-3  hover:text-gray-300 md:py-6 dark:text-gray-300 dark:hover:text-amber-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                             href="/returnbook">
                             Return Book
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             @guest
